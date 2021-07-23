@@ -1,13 +1,15 @@
 import React from "react";
 
 import Key from "../Key/Key.js";
-
+import "./App.scss";
 import keypad from "../../keypad";
+
 const App = () => {
-  const renderedKeypad = keypad.map((key, index) => {
+  const renderedKeypad = keypad.map((keyValue, index) => {
+    console.log(keyValue);
     return (
       <React.Fragment key={index}>
-        <Key key={key} />
+        <Key keyValue={keyValue} />
       </React.Fragment>
     );
   });

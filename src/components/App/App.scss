@@ -1,0 +1,94 @@
+.Calculator {
+  background-color: green;
+  margin: auto;
+  height: 50rem;
+  width: 35%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__screen {
+    width: 100%;
+    height: 12rem;
+    margin-top: 6rem;
+    background-color: yellow;
+    border-radius: 0.5rem;
+  }
+  &__body {
+    width: 100%;
+    height: calc(50rem - 6rem - 14rem);
+    padding: 1.8rem;
+    background-color: red;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
+    grid-template-rows: repeat(5, [row-start] 1fr [row-end]);
+    grid-gap: 1.5rem;
+    grid-template-areas:
+      "seven eight nine del"
+      "four five six add"
+      "one two three subtract"
+      "decimal zero divide multiply"
+      "reset reset equals equals";
+  }
+  .Key {
+    &__button--0 {
+      grid-area: zero;
+    }
+
+    &__button--1 {
+      grid-area: one;
+    }
+    &__button--2 {
+      grid-area: two;
+    }
+    &__button--3 {
+      grid-area: three;
+    }
+    &__button--4 {
+      grid-area: four;
+    }
+    &__button--5 {
+      grid-area: five;
+    }
+    &__button--6 {
+      grid-area: six;
+    }
+    &__button--7 {
+      grid-area: seven;
+    }
+
+    &__button--8 {
+      grid-area: eight;
+    }
+    &__button--9 {
+      grid-area: nine;
+    }
+    &__button--add {
+      grid-area: add;
+    }
+    &__button--subtract {
+      grid-area: subtract;
+    }
+    &__button--equals {
+      grid-area: equals;
+    }
+    &__button--multiply {
+      grid-area: multiply;
+    }
+    &__button--divide {
+      grid-area: divide;
+    }
+    &__button--reset {
+      grid-area: reset;
+    }
+    &__button--del {
+      grid-area: del;
+    }
+    &__button--decimal {
+      grid-area: decimal;
+    }
+  }
+}

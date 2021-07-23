@@ -30,5 +30,6 @@ module.exports = {
     "object-shorthand": "off", // turning off not allowing you to write methods like dog: function(){} inside objects
     "class-methods-use-this": "off", // turning off forces you to use this inside classes
     "no-plusplus": "off", // turning off not allowing me to do ++
+    "react/prop-types": 0,
   },
 };

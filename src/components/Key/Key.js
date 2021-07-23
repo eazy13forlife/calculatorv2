@@ -1,6 +1,27 @@
 import React from "react";
 
-const Key = ({ key, theme, additionalClass }) => {
+import "./Key.scss";
+
+const Key = ({ keyValue, theme, additionalClass }) => {
+  const getKeyValue = () => {
+    switch (keyValue) {
+      case "+":
+        return "add";
+      case "-":
+        return "subtract";
+      case "/":
+        return "divide";
+      case "x":
+        return "multiply";
+      case "=":
+        return "equals";
+      case ".":
+        return "decimal";
+      default:
+        return keyValue;
+    }
+  };
+
   const getAdditionalClass = () => {
     if (!additionalClass) {
       return null;
@@ -11,11 +32,11 @@ const Key = ({ key, theme, additionalClass }) => {
   };
 
   return (
-    <button className={`Calculator__button Calculator__button--${key}`}>
+    <button className={`Key__button Key__button--${getKeyValue()}`}>
       <div
-        className={`Caculator__key Calculator__key--${theme} ${getAdditionalClass()}`}
+        className={`Key__value Key__value--${theme} ${getAdditionalClass()}`}
       >
-        ${key}
+        {keyValue}
       </div>
     </button>
   );
