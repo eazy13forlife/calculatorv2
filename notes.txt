@@ -1,0 +1,10 @@
+//toggle mode, study this more
+--Initial state will be blue/orange
+--if user chooses dark mode, then it will be purple and yellow
+--if user chooses light mode, then it will be light grey/white
+
+//key
+.Calculator__key will have its own class to style each button
+.Caculator__key--${key} in order to place each key exactly where it needs to be
+delete reset and equal have a new color, so within .Calculator**key we will have a &--delete, reset and equal where
+.for  .Calculator__key--${theme}, we will need a .Calculator__key--${theme}--delete because for that specific theme only delete and reset and equal sign will have different values
