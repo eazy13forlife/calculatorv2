@@ -3,107 +3,24 @@ import React, { useState } from "react";
 import Key from "../Key/Key.js";
 import "./App.scss";
 import keypad from "../../keypad";
-import {
-  onEqualsClick,
-  onOperatorClick,
-  onNumberClick,
-  reset,
-  deleteNumber,
-  onDecimalClick,
-} from "../../calculatorFuncs";
 
+import { solve, joinAllNumbers } from "../../calculations.js";
+
+console.log(solve([400, "x", 434, "+", 40, "/", 32, "x", 54, "-", 321]));
+console.log(
+  joinAllNumbers(["2", "3", "4", "x", "5", "6", "9", "+", "1", "3"], 0)
+);
+const mike = ["5"];
+const myo = mike.slice(0, 1).join("");
+console.log(myo);
 const App = () => {
-  const [firstNumber, setFirstNumber] = useState("");
-  const [operator, setOperator] = useState(null);
-  const [secondNumber, setSecondNumber] = useState("");
-  const [view, setView] = useState(""); //what we see on calculator screen
-  const [equalsPressed, setEqualsPressed] = useState(false); //if equals button has been pressed
+  const [valuesArray, setValuesArray] = useState([]);
+  const [result, setResult] = useState(null);
 
-  console.log(firstNumber, operator, secondNumber);
-
-  const onEqualButtonClick = () => {
-    return onEqualsClick(
-      firstNumber,
-      operator,
-      secondNumber,
-      setFirstNumber,
-      setOperator,
-      setSecondNumber,
-      setView,
-      setEqualsPressed,
-      equalsPressed
-    );
-  };
-
-  const onOperatorButtonClick = (operatorClicked) => {
-    return onOperatorClick(
-      firstNumber,
-      operator,
-      secondNumber,
-      setFirstNumber,
-      setOperator,
-      setSecondNumber,
-      setView,
-      operatorClicked,
-      setEqualsPressed,
-      equalsPressed
-    );
-  };
-
-  const onNumberButtonClick = (currentNumber) => {
-    return onNumberClick(
-      currentNumber,
-      firstNumber,
-      operator,
-      secondNumber,
-      setFirstNumber,
-      setSecondNumber,
-      setView,
-      setEqualsPressed,
-      equalsPressed
-    );
-  };
-
-  const onDecimalButtonClick = () => {
-    return onDecimalClick(
-      firstNumber,
-      operator,
-      secondNumber,
-      setFirstNumber,
-      setSecondNumber,
-      setView,
-      equalsPressed,
-      setEqualsPressed
-    );
-  };
-
-  const onResetButtonClick = () => {
-    reset(setFirstNumber, setOperator, setSecondNumber);
-  };
-
-  const onDeleteButtonClick = () => {
-    deleteNumber(
-      firstNumber,
-      secondNumber,
-      operator,
-      setOperator,
-      setFirstNumber,
-      setSecondNumber,
-      setView
-    );
-  };
   const renderedKeypad = keypad.map((keyValue, index) => {
     return (
       <React.Fragment key={index}>
-        <Key
-          keyValue={keyValue}
-          onEqualButtonClick={onEqualButtonClick}
-          onOperatorButtonClick={onOperatorButtonClick}
-          onNumberButtonClick={onNumberButtonClick}
-          onResetButtonClick={onResetButtonClick}
-          onDeleteButtonClick={onDeleteButtonClick}
-          onDecimalButtonClick={onDecimalButtonClick}
-        />
+        <Key keyValue={keyValue} />
       </React.Fragment>
     );
   });
@@ -111,7 +28,7 @@ const App = () => {
   return (
     <div className="Calculator">
       <div className="Calculator__screen Calculator__screen--theme">
-        <p className="Caluclator__result">{view}</p>
+        <p className="Caluclator__result">1248</p>
       </div>
       <div className="Calculator__body Calculator__body--theme">
         {renderedKeypad}
