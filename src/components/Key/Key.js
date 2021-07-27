@@ -6,12 +6,8 @@ const Key = ({
   keyValue,
   theme,
   additionalClass,
-  onEqualButtonClick,
-  onOperatorButtonClick,
-  onNumberButtonClick,
-  onDeleteButtonClick,
-  onResetButtonClick,
-  onDecimalButtonClick,
+  onButtonClick,
+  onEqualsClick,
 }) => {
   const getKeyValue = () => {
     switch (keyValue) {
@@ -32,6 +28,15 @@ const Key = ({
     }
   };
 
+  const onClick = (value) => {
+    console.log(keyValue);
+    if (keyValue !== "reset" && keyValue !== "delete" && keyValue !== "=") {
+      onButtonClick(value);
+    }
+    if (keyValue === "=") {
+      onEqualsClick();
+    }
+  };
   const getAdditionalClass = () => {
     if (!additionalClass) {
       return null;
@@ -42,7 +47,12 @@ const Key = ({
   };
 
   return (
-    <button className={`Key__button Key__button--${getKeyValue()}`}>
+    <button
+      className={`Key__button Key__button--${getKeyValue()}`}
+      onClick={() => {
+        onClick(keyValue);
+      }}
+    >
       <div
         className={`Key__value Key__value--${theme} ${getAdditionalClass()}`}
       >

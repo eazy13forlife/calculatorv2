@@ -11,6 +11,8 @@ delete reset and equal have a new color, so within .Calculator**key we will have
 
 //functionality
 -an operator has to follow a factorial sign
+-factorial sign can only come after a number
 -if previous items was a decimal, you cant put another decimal
 -first thing can't be an operator or a factorial
--"_" means negative sign, make sure to bring center and up so it aligns vertically with number and looks like negative sign
+-"_" means negative sign, make sure to bring center and up so it aligns vertically with number and looks like negative sign. Also this can only come after an operation
+- i need to add negative button, exponent button, and factorial button.Turning ** to ^ will still work the same. Just change the code to when start is on ^, do **
