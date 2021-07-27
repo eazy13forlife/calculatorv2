@@ -6,13 +6,41 @@ import keypad from "../../keypad";
 
 import { solve, joinAllNumbers } from "../../calculations.js";
 
-console.log(solve([400, "x", 434, "+", 40, "/", 32, "x", 54, "-", 321]));
+console.log(solve([2, "-", "9"]));
+/*
 console.log(
-  joinAllNumbers(["2", "3", "4", "x", "5", "6", "9", "+", "1", "3"], 0)
+  joinAllNumbers(
+    [
+      "2",
+      "3",
+      "4",
+      "x",
+      "5",
+      "-",
+      "6",
+      "9",
+      "+",
+      "1",
+      "!",
+      "x",
+      "3",
+      "x",
+      "5",
+      "9",
+      "**",
+      "2",
+      "!",
+      "x",
+      "4",
+      "x",
+      "5",
+    ],
+    0
+  )
 );
-const mike = ["5"];
-const myo = mike.slice(0, 1).join("");
-console.log(myo);
+*/
+console.log(joinAllNumbers([2, "+", "_", 5]));
+console.log(2 ** 8);
 const App = () => {
   const [valuesArray, setValuesArray] = useState([]);
   const [result, setResult] = useState(null);
