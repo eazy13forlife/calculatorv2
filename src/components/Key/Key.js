@@ -2,15 +2,7 @@ import React from "react";
 
 import "./Key.scss";
 
-const Key = ({
-  keyValue,
-  theme,
-  additionalClass,
-  onNumberAndOperatorClick,
-  onEqualsClick,
-  onDeleteClick,
-  onResetClick,
-}) => {
+const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
   const getKeyClassName = () => {
     switch (keyValue) {
       case "+":
@@ -38,16 +30,27 @@ const Key = ({
 
   const onButtonClick = (value) => {
     switch (value) {
+      case "x":
+      case "/":
+      case "-":
+      case "+":
+        return clickFunctions.onOperatorClick(value);
       case "=":
-        return onEqualsClick();
-      case "+/-":
-        return onNumberAndOperatorClick("_");
-      case "del":
-        return onDeleteClick();
+        return clickFunctions.onEqualsClick();
       case "reset":
-        return onResetClick();
+        return clickFunctions.onResetClick();
+      case "del":
+        return clickFunctions.onDeleteClick();
+      case "!":
+        return clickFunctions.onFactorialClick();
+      case "^":
+        return clickFunctions.onExponentClick();
+      case ".":
+        return clickFunctions.onDecimalClick();
+      case "+/-":
+        return clickFunctions.onNegativeClick();
       default:
-        return onNumberAndOperatorClick(value);
+        return clickFunctions.onNumberClick(value);
     }
   };
 
