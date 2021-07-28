@@ -4,6 +4,7 @@ import Key from "../Key/Key.js";
 import "./App.scss";
 import keypad from "../../keypad";
 
+console.log(256.7 % 256.7);
 import { solve, joinAllNumbers } from "../../calculations.js";
 import {
   onOperatorClick,
@@ -44,7 +45,7 @@ const App = () => {
       onDeleteClick(valuesArray, setValuesArray);
     },
     onResetClick: () => {
-      onResetClick(setValuesArray);
+      onResetClick(setValuesArray, setResult);
     },
     onEqualsClick: () => {
       onEqualsClick(joinAllNumbers, solve, valuesArray, setResult);

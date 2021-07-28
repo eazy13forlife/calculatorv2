@@ -73,7 +73,7 @@ const doExponents = (array) => {
     endPoint = start + 1;
   }
 
-  if (array[numberBefore] && array[endPoint]) {
+  if (numberBefore < array.length && endPoint < array.length) {
     const exponential = array[numberBefore] ** array[endPoint];
     array.splice(numberBefore, 3, exponential);
   }
@@ -208,7 +208,8 @@ const solve = (valuesArray) => {
   doExponents(valuesArray);
   multiplyAndDivide(valuesArray);
   addAndSubtract(valuesArray);
-  return +valuesArray.join("");
+  const number = +valuesArray.join("");
+  return roundNumberToFixed(number, 2);
 };
 
 //recursive function for finding the factorial
@@ -221,5 +222,12 @@ const getFactorial = (number) => {
   }
   return number * getFactorial(number - 1);
 };
-
+//takes a number with decimals and returns a fixed amount of decimals
+const roundNumberToFixed = (number, fixed) => {
+  if (number % 1 !== 0) {
+    return +number.toFixed(fixed);
+  } else {
+    return number;
+  }
+};
 export { solve, joinAllNumbers };

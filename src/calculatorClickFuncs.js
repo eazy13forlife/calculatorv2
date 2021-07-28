@@ -178,8 +178,9 @@ const onDeleteClick = (valuesArray, setValuesArray) => {
 };
 
 //function for when we select reset
-const onResetClick = (setValuesArray) => {
+const onResetClick = (setValuesArray, setResult) => {
   setValuesArray([]);
+  setResult(null);
 };
 
 export {
