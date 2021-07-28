@@ -60,14 +60,14 @@ const addAndSubtract = (array) => {
 //anytime  ** is seen, it performs base**exponent and replaces the expression in
 //the array with the solution
 const doExponents = (array) => {
-  if (!array.includes("**")) {
+  if (!array.includes("^")) {
     return array;
   }
 
   let numberBefore;
   let start = 0;
   let endPoint;
-  while (start < array.length && array[start] !== "**") {
+  while (start < array.length && array[start] !== "^") {
     numberBefore = start;
     start++;
     endPoint = start + 1;
@@ -124,7 +124,7 @@ const joinAllNumbers = (originalStringArray) => {
       array[endPoint] !== "/" &&
       array[endPoint] !== "+" &&
       array[endPoint] !== "-" &&
-      array[endPoint] !== "**" &&
+      array[endPoint] !== "^" &&
       array[endPoint] !== "!"
     ) {
       endPoint++;
@@ -157,14 +157,15 @@ const addToNewArray = (
   //originalArray[endPoint] tells us the operator,so if operator doesn't exist
   if (endPoint >= originalArray.length) {
     newArray.push(number); // we just push in number that was created to newArray
-    originalArray.splice(startPoint); //we remove this number,which starts from startPoint and all that comes after it from our originalArray since endPoint is outside our array bounds
+    originalArray.splice(startPoint); //we remove this number,which starts from startPoint and continues till the end of the array.*our endPoint is outside our array bounds
     return;
   }
 
-  //originalArray[endPoint] tells us the operator,so if operator does exist and it equals a factorial, we check to see if there is an  +,-,/,x after it.*we set in rules that what follows a factorial has to be one of those operators, so this is why this works. Because if there is we push the number, factorial and operator into our newArray
+  //originalArray[endPoint] tells us the operator,so if operator does exist and it equals a factorial, we check to see if there is an  +,-,/,x after it.*we set in rules that what follows a factorial has to be one of those operators, so this is why this works.
+  //if there is another operator,we push the number, factorial and operator into our newArray
   if (originalArray[endPoint] === "!") {
     if (endPoint + 1 < originalArray.length) {
-      //if an operator comes after the factorial sign
+      //if what comes after endPoint is still within our array, then an operator exists
       newArray.push(
         number,
         originalArray[endPoint],
@@ -172,7 +173,7 @@ const addToNewArray = (
       ); ///we push the number, factorial and operator to our newArray
       originalArray.splice(startPoint, endPoint + 2); //we remove the number, the factorial and the operator from originalArray
     } else {
-      newArray.push(number, originalArray[endPoint]); //if no operator comes after the factorial, we just push in the number and factorial to newArray.We don't want to accidentally end up putting undefined, so this is why we only push in the factorial
+      newArray.push(number, originalArray[endPoint]); //if what comes after endPoint is not within the bounds of our array,then no operator comes after the factorial, we just push in the number and factorial to newArray.We don't want to accidentally end up pushing in undefined, so this is why we only push in the factorial
       originalArray.splice(startPoint); //we remove the number and all that comes after it from originalArray since what comes after factorial is outside the scope of our array
     }
     return;
@@ -197,7 +198,7 @@ const solve = (valuesArray) => {
       return "Error";
     case "+":
       return "Error";
-    case "**":
+    case "^":
       return "Error";
     default:
       break;

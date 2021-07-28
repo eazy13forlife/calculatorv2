@@ -14,6 +14,13 @@
     margin-top: 6rem;
     background-color: yellow;
     border-radius: 0.5rem;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  &__math {
+    background-color: pink;
+    display: flex;
+    align-items: center;
   }
   &__body {
     width: 100%;
@@ -24,14 +31,15 @@
     border-radius: 0.5rem;
     display: grid;
     grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
-    grid-template-rows: repeat(5, [row-start] 1fr [row-end]);
-    grid-gap: 1.5rem;
+    grid-template-rows: repeat(6, [row-start] 1fr [row-end]);
+    grid-gap: 1rem;
     grid-template-areas:
       "seven eight nine del"
       "four five six add"
       "one two three subtract"
       "decimal zero divide multiply"
-      "reset reset equals equals";
+      "reset factorial exponent negative "
+      "equals equals equals equals";
   }
   .Key {
     &__button--0 {
@@ -90,5 +98,28 @@
     &__button--decimal {
       grid-area: decimal;
     }
+
+    &__button--exponent {
+      grid-area: exponent;
+    }
+    &__button--negative {
+      grid-area: negative;
+    }
+    &__button--factorial {
+      grid-area: factorial;
+    }
   }
+}
+p.number {
+  font-size: var(--numbers-font);
+  color: red;
+  background-color: purple;
+  margin-left: 1rem;
+  &--negative {
+    position: relative;
+    bottom: 1.1rem;
+  }
+}
+
+.negative {
 }
