@@ -70,16 +70,18 @@ const App = () => {
     } else {
       return (
         <p key={index} className="number number--negative">
-          <p className="negative">{value}</p>
+          <span className="negative">{value}</span>
         </p>
       );
     }
   });
   return (
-    <div className="Calculator">
+    <div className="Calculator Calculator--theme">
       <div className="Calculator__screen Calculator__screen--theme">
-        <p className="Calculator__math">{renderedScreenValues}</p>
-        <p className="Caluclator__result">{result}</p>
+        <div className="Calculator__math Calculator__math--theme">
+          {renderedScreenValues}
+        </div>
+        <p className="Calculator__result Calculator__result--theme">{result}</p>
       </div>
       <div className="Calculator__body Calculator__body--theme">
         {renderedKeypad}

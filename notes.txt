@@ -16,3 +16,15 @@ delete reset and equal have a new color, so within .Calculator**key we will have
 -first thing can't be an operator or a factorial
 -"_" means negative sign, make sure to bring center and up so it aligns vertically with number and looks like negative sign. Also this can only come after an operation
 - i need to add negative button, exponent button, and factorial button.Turning ** to ^ will still work the same. Just change the code to when start is on ^, do **
+
+--make sure to show errors. errors will be in a separate state and we display it at top of calculator
+
+
+//themes
+-regular theme is theme1;
+-light theme is theme2
+-dark theme is theme3
+
+//look at toggle
+//when we toggle we select a theme class
+//getAdditionalClass() will look like key__value--theme--del-reset key__value--theme--equals
