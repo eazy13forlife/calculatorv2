@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Toggle.scss";
 
-const Toggle = () => {
+const Toggle = ({ onRadioSelection }) => {
   return (
     <div className="Toggle">
       <div className="Toggle__options">
@@ -17,14 +17,19 @@ const Toggle = () => {
           id="light"
           value="light"
           name="theme"
+          onChange={(e) => {
+            onRadioSelection(e.target.value);
+          }}
         />
         <input
           type="radio"
           className="Toggle__radio-button Toggle__radio-button--default"
           id="default"
           value="default"
-          checked="checked"
           name="theme"
+          onChange={(e) => {
+            onRadioSelection(e.target.value);
+          }}
         />
         <input
           type="radio"
@@ -32,6 +37,9 @@ const Toggle = () => {
           id="dark"
           value="dark"
           name="theme"
+          onChange={(e) => {
+            onRadioSelection(e.target.value);
+          }}
         />
         <label htmlFor="light" className="Toggle__reference"></label>
         <label htmlFor="default" className="Toggle__reference"></label>

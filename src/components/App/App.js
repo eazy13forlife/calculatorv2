@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Key from "../Key/Key.js";
 import "./App.scss";
 import keypad from "../../keypad";
-
-console.log(256.7 % 256.7);
+import Toggle from "../Toggle/Toggle.js";
 import { solve, joinAllNumbers } from "../../calculations.js";
 import {
   onOperatorClick,
@@ -21,6 +20,8 @@ import {
 const App = () => {
   const [valuesArray, setValuesArray] = useState([]);
   const [result, setResult] = useState(null);
+  const [theme, setTheme] = useState("default");
+  console.log(theme);
 
   const clickFunctions = {
     onOperatorClick: (operator) => {
@@ -52,6 +53,25 @@ const App = () => {
     },
   };
 
+  const setColorScheme = () => {
+    if (window.matchMedia(`(prefers-color-scheme:dark)`).matches) {
+      setTheme("dark");
+    } else if (window.matchMedia(`(prefers-color-scheme:light)`).matches) {
+      setTheme("light");
+    } else {
+      setTheme("default");
+    }
+  };
+
+  useEffect(() => {
+    setColorScheme();
+    window
+      .matchMedia(`(prefers-color-scheme:light)`)
+      .addEventListener("change", (e) => {
+        setColorScheme();
+      });
+  }, []);
+
   const renderedKeypad = keypad.map((keyValue, index) => {
     return (
       <React.Fragment key={index}>
@@ -75,18 +95,24 @@ const App = () => {
       );
     }
   });
+
   return (
-    <div className="Calculator Calculator--theme">
-      <div className="Calculator__screen Calculator__screen--theme">
-        <div className="Calculator__math Calculator__math--theme">
-          {renderedScreenValues}
+    <main className={`Calculator__background Calculator__background--theme`}>
+      <div className="Calculator Calculator--theme">
+        <Toggle onRadioSelection={setTheme} />
+        <div className="Calculator__screen Calculator__screen--theme">
+          <div className="Calculator__math Calculator__math--theme">
+            {renderedScreenValues}
+          </div>
+          <p className="Calculator__result Calculator__result--theme">
+            {result}
+          </p>
         </div>
-        <p className="Calculator__result Calculator__result--theme">{result}</p>
+        <div className="Calculator__body Calculator__body--theme">
+          {renderedKeypad}
+        </div>
       </div>
-      <div className="Calculator__body Calculator__body--theme">
-        {renderedKeypad}
-      </div>
-    </div>
+    </main>
   );
 };
 

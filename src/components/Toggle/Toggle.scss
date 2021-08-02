@@ -1,7 +1,7 @@
 .Toggle {
   &__container {
     width: 3.5rem;
-    background-color: green;
+    background-color: red;
     display: flex;
     border-radius: 1rem;
     justify-content: space-between;
@@ -21,7 +21,7 @@
     &--light {
       &:checked ~ .Toggle__circle {
         left: 2%;
-        transform: translateX(-0%) translateY(-50%);
+        transform: translateX(0%) translateY(-50%);
       }
     }
     &--default {
@@ -40,9 +40,8 @@
   &__reference {
     width: 1.2rem;
     height: 1.2rem;
-    background-color: red;
     border-radius: 50%;
-    opacity: 0;
+    opacity: 1;
   }
   &__circle {
     position: absolute;
@@ -51,6 +50,8 @@
     background-color: blue;
     border-radius: 50%;
     top: 50%;
-    transition: all 400ms;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 200ms;
   }
 }

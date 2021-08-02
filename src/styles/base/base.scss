@@ -1,5 +1,5 @@
 :root {
-  //theme 1
+  //theme 1 default
   //background 1
   --main-background-1: hsl(222, 26%, 31%);
   --keypad-background-1: hsl(223, 31%, 20%);
@@ -18,7 +18,7 @@
   --text-primary-1a: hsl(221, 14%, 31%);
   --text-primary-1b: hsl(0, 0, 100%);
   //////////////////////////////////////////////////////////////////////////
-  //theme 2
+  //theme 2 light
   //background
   --main-background-2: hsl(0, 0%, 90%);
   --keypad-background-2: hsl(0, 5%, 81%);
@@ -37,7 +37,7 @@
   --text-primary-2a: hsl(60, 10%, 19%);
   --text-primary-2b: hsl(0, 0, 100%);
   //////////////////////////////////////////////////////////////////////////
-  //theme 3
+  //theme 3 dark
   //background
   --main-background-3: hsl(268, 75%, 9%);
   --keypad-background-3: hsl(268, 71%, 12%);
@@ -75,4 +75,6 @@ body {
   box-sizing: border-box;
   font-family: "Spartan", sans-serif;
   font-weight: 700;
+  min-height: 100vh;
+  background-color: purple;
 }
