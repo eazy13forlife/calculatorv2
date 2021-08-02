@@ -16,7 +16,7 @@
   --key-shadow-tertiary-1b: hsl(28, 16%, 65%);
   //text
   --text-primary-1a: hsl(221, 14%, 31%);
-  --text-primary-1b: hsl(0, 0, 100%);
+  --text-primary-1b: hsl(0, 0%, 100%);
   //////////////////////////////////////////////////////////////////////////
   //theme 2 light
   //background
@@ -35,7 +35,7 @@
   --key-shadow-tertiary-2b: hsl(35, 11%, 61%);
   //text
   --text-primary-2a: hsl(60, 10%, 19%);
-  --text-primary-2b: hsl(0, 0, 100%);
+  --text-primary-2b: hsl(0, 0%, 100%);
   //////////////////////////////////////////////////////////////////////////
   //theme 3 dark
   //background
@@ -55,9 +55,10 @@
   //text
   --text-primary-3a: hsl(52, 100%, 62%);
   --text-primary-3b: hsl(198, 20%, 13%);
-  --text-primary-3c: hsl(0, 0, 100%);
+  --text-primary-3c: hsl(0, 0%, 100%);
   /////////////////////////////////////////////////////////////////////////////
   --numbers-font: 3.2rem;
+  --numbers-font-small: 2.4rem;
 }
 
 html {

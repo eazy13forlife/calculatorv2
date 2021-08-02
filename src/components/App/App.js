@@ -69,7 +69,10 @@ const App = () => {
   const renderedScreenValues = valuesArray.map((value, index) => {
     if (value !== "_") {
       return (
-        <p key={index} className="number">
+        <p
+          key={index}
+          className={`Calculator__screen-number ${`Calculator__screen-number--${theme}`}`}
+        >
           {value}
         </p>
       );
@@ -85,12 +88,18 @@ const App = () => {
   return (
     <main className={`Calculator__background Calculator__background--${theme}`}>
       <div className={`Calculator Calculator--${theme}`}>
-        <Toggle onRadioSelection={setTheme} />
+        <div className={`Calculator__heading Calculator__heading--${theme}`}>
+          <h1 className={`Calculator__logo `}>calc</h1>
+          <div className="Calculator__toggle">
+            <p className=" Calculator__text">Theme</p>
+            <Toggle onRadioSelection={setTheme} />
+          </div>
+        </div>
         <div className={`Calculator__screen Calculator__screen--${theme}`}>
           <div className="Calculator__math Calculator__math--theme">
             {renderedScreenValues}
           </div>
-          <p className="Calculator__result Calculator__result--theme">
+          <p className={`Calculator__result Calculator__result--${theme}`}>
             {result}
           </p>
         </div>

@@ -3,6 +3,7 @@ import React from "react";
 import "./Key.scss";
 
 const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
+  console.log(keyValue);
   const getKeyClassName = () => {
     switch (keyValue) {
       case "+":
@@ -66,16 +67,16 @@ const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
 
   return (
     <button
-      className={`Key__button  Key__button--${theme} Key__button--${getKeyClassName()}`}
+      className={`Key__button  Key__button--${theme} Key__button--${getKeyClassName()} ${
+        keyValue === "del" || keyValue === "reset" || keyValue === "="
+          ? `Key__button--${theme}--${getKeyClassName()}`
+          : null
+      }`}
       onClick={() => {
         onButtonClick(keyValue);
       }}
     >
-      <div
-        className={`Key__value Key__value--${theme} ${getAdditionalClass()}`}
-      >
-        {keyValue}
-      </div>
+      <div className={`Key__value Key__value--${theme} `}>{keyValue}</div>
     </button>
   );
 };

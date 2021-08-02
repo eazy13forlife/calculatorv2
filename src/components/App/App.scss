@@ -34,7 +34,30 @@
   &--dark {
     background-color: var(--main-background-3);
   }
-
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    &--default {
+      color: var(--text-primary-1b);
+    }
+    &--light {
+      color: var(--text-primary-2a);
+    }
+    &--dark {
+      color: var(--text-primary-3a);
+    }
+  }
+  &__logo {
+    font-size: var(--numbers-font);
+  }
+  &__toggle {
+    display: flex;
+    align-items: center;
+    .Calculator__text {
+      margin-right: 2rem;
+      text-transform: uppercase;
+    }
+  }
   &__screen {
     width: 100%;
     height: 12rem;
@@ -49,11 +72,10 @@
       background-color: var(--screen-background-2);
     }
     &--dark {
-      background-color: var(--screen-background-3);
+      background-color: var(--keypad-background-3);
     }
   }
   &__math {
-    background-color: pink;
     display: flex;
     align-items: center;
   }
@@ -84,6 +106,24 @@
     &--dark {
       background-color: var(--keypad-background-3);
     }
+  }
+  &__screen-number,
+  &__result {
+    margin-top: 1rem;
+    margin-left: 0.2rem;
+    font-size: var(--numbers-font-small);
+    &--default {
+      color: var(--text-primary-1b);
+    }
+    &--light {
+      color: var(--text-primary-2a);
+    }
+    &--dark {
+      color: var(--text-primary-3a);
+    }
+  }
+  &__result {
+    font-size: var(--numbers-font);
   }
   .Key {
     &__button--0 {
@@ -157,11 +197,12 @@
 p.number {
   font-size: var(--numbers-font);
   color: red;
-  background-color: purple;
+
   margin-left: 1rem;
   &--negative {
     position: relative;
-    bottom: 1.1rem;
+    bottom: 0.6rem;
+    font-size: 2.9rem;
   }
 }
 
