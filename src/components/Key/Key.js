@@ -66,7 +66,7 @@ const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
 
   return (
     <button
-      className={`Key__button  Key__button--theme Key__button--${getKeyClassName()}`}
+      className={`Key__button  Key__button--${theme} Key__button--${getKeyClassName()}`}
       onClick={() => {
         onButtonClick(keyValue);
       }}

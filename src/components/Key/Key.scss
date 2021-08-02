@@ -2,6 +2,18 @@
   &__button {
     border-radius: 0.8rem;
     box-shadow: 0rem 0.14rem 0.2rem darkgrey;
-    font-size: 2rem;
+    font-size: 3.2rem;
+    &--default {
+      background-color: var(--key-background-tertiary-1);
+      color: var(--text-primary-1a);
+    }
+    &--light {
+      background-color: var(--key-background-tertiary-2);
+      color: var(--text-primary-2a);
+    }
+    &--dark {
+      background-color: var(--key-background-tertiary-3);
+      color: var(--text-primary-3a);
+    }
   }
 }

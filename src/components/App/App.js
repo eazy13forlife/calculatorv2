@@ -17,10 +17,11 @@ import {
   onFactorialClick,
 } from "../../calculatorClickFuncs.js";
 
+import useColorTheme from "../../Hooks/useColorTheme.js";
 const App = () => {
   const [valuesArray, setValuesArray] = useState([]);
   const [result, setResult] = useState(null);
-  const [theme, setTheme] = useState("default");
+  const [theme, setTheme] = useColorTheme();
   console.log(theme);
 
   const clickFunctions = {
@@ -53,29 +54,14 @@ const App = () => {
     },
   };
 
-  const setColorScheme = () => {
-    if (window.matchMedia(`(prefers-color-scheme:dark)`).matches) {
-      setTheme("dark");
-    } else if (window.matchMedia(`(prefers-color-scheme:light)`).matches) {
-      setTheme("light");
-    } else {
-      setTheme("default");
-    }
-  };
-
-  useEffect(() => {
-    setColorScheme();
-    window
-      .matchMedia(`(prefers-color-scheme:light)`)
-      .addEventListener("change", (e) => {
-        setColorScheme();
-      });
-  }, []);
-
   const renderedKeypad = keypad.map((keyValue, index) => {
     return (
       <React.Fragment key={index}>
-        <Key keyValue={keyValue} clickFunctions={clickFunctions} />
+        <Key
+          keyValue={keyValue}
+          clickFunctions={clickFunctions}
+          theme={theme}
+        />
       </React.Fragment>
     );
   });
@@ -97,10 +83,10 @@ const App = () => {
   });
 
   return (
-    <main className={`Calculator__background Calculator__background--theme`}>
-      <div className="Calculator Calculator--theme">
+    <main className={`Calculator__background Calculator__background--${theme}`}>
+      <div className={`Calculator Calculator--${theme}`}>
         <Toggle onRadioSelection={setTheme} />
-        <div className="Calculator__screen Calculator__screen--theme">
+        <div className={`Calculator__screen Calculator__screen--${theme}`}>
           <div className="Calculator__math Calculator__math--theme">
             {renderedScreenValues}
           </div>
@@ -108,7 +94,7 @@ const App = () => {
             {result}
           </p>
         </div>
-        <div className="Calculator__body Calculator__body--theme">
+        <div className={`Calculator__body Calculator__body--${theme}`}>
           {renderedKeypad}
         </div>
       </div>
