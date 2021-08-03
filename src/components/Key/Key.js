@@ -3,7 +3,6 @@ import React from "react";
 import "./Key.scss";
 
 const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
-  console.log(keyValue);
   const getKeyClassName = () => {
     switch (keyValue) {
       case "+":

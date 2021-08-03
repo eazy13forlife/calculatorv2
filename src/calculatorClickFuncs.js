@@ -1,7 +1,28 @@
 //function for when we select an operator
-const onOperatorClick = (operator, valuesArray, setValuesArray) => {
-  //if the last item is an exponent, we don't push in operator
+const onOperatorClick = (
+  operator,
+  valuesArray,
+  setValuesArray,
+  result,
+  setResult,
+  setErrorMessage
+) => {
+  setErrorMessage(null);
+  //if we have a result and an operator was just selected, use that result in addition with our operator to compute a new value
+  if (result) {
+    let resultArray = result.toString().split("");
+    if (resultArray.includes("e")) {
+      resultArray = Number(result).toString().split("");
+    }
+    const newValuesArray = [...resultArray, operator];
+    setValuesArray(newValuesArray);
+    setResult(null);
+    return;
+  }
+
   if (valuesArray[valuesArray.length - 1] === "^") {
+    //if the last item is an exponent, we don't push in operator
+    setErrorMessage("Must provide a number");
     return;
   }
 
@@ -30,10 +51,25 @@ const onOperatorClick = (operator, valuesArray, setValuesArray) => {
 };
 
 //function for when we select a number
-const onNumberClick = (number, valuesArray, setValuesArray) => {
+const onNumberClick = (
+  number,
+  valuesArray,
+  setValuesArray,
+  result,
+  setResult,
+  setErrorMessage
+) => {
+  setErrorMessage(null);
+  //if we have a result and a number was just selected, begin a new calculation with this number and clear the result
+  if (result) {
+    setValuesArray([number]);
+    setResult(null);
+    return;
+  }
   //if the last value is a factorial, don't push in a number. An operator has to
   //follow a factorial
   if (valuesArray[valuesArray.length - 1] === "!") {
+    setErrorMessage("Must provide an operator");
     return;
   }
 
@@ -44,10 +80,25 @@ const onNumberClick = (number, valuesArray, setValuesArray) => {
 };
 
 //function for when we select negative sign
-const onNegativeClick = (valuesArray, setValuesArray) => {
+const onNegativeClick = (
+  valuesArray,
+  setValuesArray,
+  result,
+  setResult,
+  setErrorMessage
+) => {
+  setErrorMessage(null);
+  //if we have a result and a negative sign was just selected, begin a new calculation with this negative sign and clear the result
+  if (result) {
+    setValuesArray(["_"]);
+    setResult(null);
+    return;
+  }
+
   //if the last value is a factorial, don't push in the negative sign. An operator has to
   //follow a factorial
   if (valuesArray[valuesArray.length - 1] === "!") {
+    setErrorMessage("Must provide an operator");
     return;
   }
 
@@ -56,6 +107,7 @@ const onNegativeClick = (valuesArray, setValuesArray) => {
     !isNaN(+valuesArray[valuesArray.length - 1]) ||
     valuesArray[valuesArray.length - 1] === "."
   ) {
+    setErrorMessage("Cannot place a negative sign here");
     return;
   }
 
@@ -66,15 +118,18 @@ const onNegativeClick = (valuesArray, setValuesArray) => {
 };
 
 //function for when we select a decimal
-const onDecimalClick = (valuesArray, setValuesArray) => {
+const onDecimalClick = (valuesArray, setValuesArray, setErrorMessage) => {
+  setErrorMessage(null);
   //if the last value is a factorial, don't push in the decimal. An operator has to
   //follow a factorial
   if (valuesArray[valuesArray.length - 1] === "!") {
+    setErrorMessage("Must provide an operator");
     return;
   }
 
   //if the last value is a decimal, don't push in the decimal. We don't want multiple successive decimals
   if (valuesArray[valuesArray.length - 1] === ".") {
+    setErrorMessage("Cannot place another decimal here");
     return;
   }
 
@@ -100,8 +155,27 @@ const onDecimalClick = (valuesArray, setValuesArray) => {
 };
 
 //function for when we select an exponent
-const onExponentClick = (valuesArray, setValuesArray) => {
-  //if the last value doesnt exist or it equals an operator or negative sign and we click exponent, don't do anything. An exponent should only follow a number
+const onExponentClick = (
+  valuesArray,
+  setValuesArray,
+  result,
+  setResult,
+  setErrorMessage
+) => {
+  setErrorMessage(null);
+  //if we have a result and an exponent was just selected, use that result in addition with our exponent to compute a new value
+  if (result) {
+    let resultArray = result.toString().split("");
+    if (resultArray.includes("e")) {
+      resultArray = Number(result).toString().split("");
+    }
+    const newValuesArray = [...resultArray, "^"];
+    setValuesArray(newValuesArray);
+    setResult(null);
+    return;
+  }
+
+  //if the last value doesnt exist or it equals an operator or negative sign or exponent and we click exponent, don't do anything. An exponent should only follow a number
   switch (valuesArray[valuesArray.length - 1]) {
     case undefined:
     case "x":
@@ -110,6 +184,8 @@ const onExponentClick = (valuesArray, setValuesArray) => {
     case "-":
     case "_":
     case "!":
+    case "^":
+      setErrorMessage("Exponent must follow a number value");
       return;
     default:
       break;
@@ -123,6 +199,7 @@ const onExponentClick = (valuesArray, setValuesArray) => {
       newValues.push(0, "^");
       setValuesArray(newValues);
     } else {
+      setErrorMessage("Exponent must follow a number value");
       return;
     }
   }
@@ -132,15 +209,36 @@ const onExponentClick = (valuesArray, setValuesArray) => {
 };
 
 //function for when we select a factorial
-const onFactorialClick = (valuesArray, setValuesArray) => {
-  //if the last item equals an operator,negative sign, or exponent, don't do anything. A factorial should only come after a number
+const onFactorialClick = (
+  valuesArray,
+  setValuesArray,
+  result,
+  setResult,
+  setErrorMessage
+) => {
+  setErrorMessage(null);
+  //if we have a result and a factorial was just selected, use that result in addition with our factorial to compute a new value
+  if (result) {
+    let resultArray = result.toString().split("");
+    if (resultArray.includes("e")) {
+      resultArray = Number(result).toString().split("");
+    }
+    const newValuesArray = [...resultArray, "!"];
+    setValuesArray(newValuesArray);
+    setResult(null);
+    return;
+  }
+
+  //if the last item doesn't exist,equals an operator,negative sign, or exponent, don't do anything. A factorial should only come after a number
   switch (valuesArray[valuesArray.length - 1]) {
+    case undefined:
     case "x":
     case "/":
     case "+":
     case "-":
     case "_":
     case "^":
+      setErrorMessage("Factorial must follow a number value");
       return;
     default:
       break;
@@ -154,6 +252,7 @@ const onFactorialClick = (valuesArray, setValuesArray) => {
       newValues.push(0, "!");
       setValuesArray(newValues);
     } else {
+      setErrorMessage("Factorial must follow a number value");
       return;
     }
   }

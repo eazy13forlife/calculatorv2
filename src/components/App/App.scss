@@ -19,7 +19,7 @@
 
 .Calculator {
   margin: auto;
-  height: 50rem;
+  height: 51.5rem;
   width: 32%;
   position: absolute;
   top: 50%;
@@ -55,41 +55,48 @@
     align-items: center;
     .Calculator__text {
       margin-right: 2rem;
+      margin-top: 1rem;
       text-transform: uppercase;
     }
   }
   &__screen {
     width: 100%;
     height: 12rem;
-    margin-top: 6rem;
+    margin-top: 2rem;
     border-radius: 0.5rem;
-    overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-y: scroll;
+    position: relative;
+    padding: 1rem;
     &--default {
       background-color: var(--screen-background-1);
+      color: var(--text-primary-1b);
     }
     &--light {
       background-color: var(--screen-background-2);
+      color: var(--text-primary-2a);
     }
     &--dark {
       background-color: var(--keypad-background-3);
+      color: var(--text-primary-3a);
     }
   }
   &__math {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
   }
   &__body {
     width: 100%;
-    height: calc(50rem - 6rem - 11rem);
+    height: calc(50rem - 6rem - 12.2rem);
     padding: 1.8rem;
-    background-color: red;
     margin-top: 2rem;
     border-radius: 0.5rem;
     display: grid;
     grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
     grid-template-rows: repeat(6, [row-start] 1fr [row-end]);
-    grid-gap: 1rem;
+    grid-column-gap: 1.2rem;
+    grid-row-gap: 1.2rem;
     grid-template-areas:
       "seven eight nine del"
       "four five six add"
@@ -107,23 +114,32 @@
       background-color: var(--keypad-background-3);
     }
   }
-  &__screen-number,
-  &__result {
-    margin-top: 1rem;
-    margin-left: 0.2rem;
+
+  &__screen-number {
     font-size: var(--numbers-font-small);
-    &--default {
-      color: var(--text-primary-1b);
+    margin-left: 0.2rem;
+    &--multiply {
+      transform: translateY(-0.3rem);
+      margin: 0rem 0.5rem;
     }
-    &--light {
-      color: var(--text-primary-2a);
+    &--subtract {
+      transform: translateY(-0.2rem);
+      margin: 0rem 0.5rem;
     }
-    &--dark {
-      color: var(--text-primary-3a);
+    &--add {
+      margin: 0rem 0.5rem;
+    }
+    &--divide {
+      margin: 0rem 0.5rem;
     }
   }
   &__result {
     font-size: var(--numbers-font);
+    margin-top: 1rem;
+    margin-left: 0.2rem;
+    text-align: right;
+    padding-right: 0.8rem;
+    width: 100%;
   }
   .Key {
     &__button--0 {

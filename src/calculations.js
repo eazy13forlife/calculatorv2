@@ -208,8 +208,10 @@ const solve = (valuesArray) => {
   doExponents(valuesArray);
   multiplyAndDivide(valuesArray);
   addAndSubtract(valuesArray);
-  const number = +valuesArray.join("");
-  return roundNumberToFixed(number, 2);
+  let number = +valuesArray.join("");
+  number = roundNumberToFixed(number, 2);
+
+  return getScientificNotation(number); //returns a string
 };
 
 //recursive function for finding the factorial
@@ -217,11 +219,15 @@ const getFactorial = (number) => {
   if (number < 0) {
     return undefined;
   }
+  if (number > 171) {
+    return Infinity;
+  }
   if (number === 1) {
     return 1;
   }
   return number * getFactorial(number - 1);
 };
+
 //takes a number with decimals and returns a fixed amount of decimals
 const roundNumberToFixed = (number, fixed) => {
   if (number % 1 !== 0) {
@@ -229,5 +235,19 @@ const roundNumberToFixed = (number, fixed) => {
   } else {
     return number;
   }
+};
+
+//takes a number and returns scientific notation if number of digits are too large
+const getScientificNotation = (number) => {
+  let numberCopy = number;
+
+  if (!isNaN(numberCopy) && numberCopy !== Infinity) {
+    const numberArray = numberCopy.toString().split("");
+    if (numberArray.length > 12) {
+      return Number.parseFloat(number).toExponential(6);
+    }
+  }
+
+  return number;
 };
 export { solve, joinAllNumbers };

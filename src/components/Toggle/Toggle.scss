@@ -1,12 +1,12 @@
 .Toggle {
   &__container {
-    width: 3.5rem;
+    width: 4.5rem;
     background-color: red;
     display: flex;
     border-radius: 1rem;
     justify-content: space-between;
     align-items: center;
-    height: 1.2rem;
+    height: 1.5rem;
     position: relative;
     &--default {
       background-color: var(--keypad-background-1);
@@ -20,7 +20,7 @@
   }
 
   &__options {
-    width: 3.2rem;
+    width: 4.3rem;
     display: flex;
     font-size: 0.8rem;
     justify-content: space-between;
@@ -54,8 +54,8 @@
   }
   &__circle {
     position: absolute;
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 1.2rem;
+    height: 1.2rem;
     background-color: blue;
     border-radius: 50%;
     top: 50%;
@@ -63,10 +63,13 @@
     transform: translate(-50%, -50%);
     transition: all 200ms;
     &--default {
+      background-color: var(--key-background-secondary-1);
     }
     &--light {
+      background-color: var(--key-background-secondary-2);
     }
     &--dark {
+      background-color: var(--key-background-secondary-3);
     }
   }
 }

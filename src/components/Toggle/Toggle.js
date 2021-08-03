@@ -3,6 +3,31 @@ import React from "react";
 import "./Toggle.scss";
 
 const Toggle = ({ onRadioSelection, theme }) => {
+  const getToggleCirclePosition = () => {
+    switch (theme) {
+      case "default":
+        return {
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        };
+      case "light":
+        return {
+          top: "50%",
+          left: " 2%",
+          transform: "translateX(0%) translateY(-50%)",
+        };
+      case "dark":
+        return {
+          top: "50%",
+          left: " 98%",
+          transform: "translateX(-100%) translateY(-50%)",
+        };
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="Toggle">
       <div className="Toggle__options">
@@ -44,7 +69,10 @@ const Toggle = ({ onRadioSelection, theme }) => {
         <label htmlFor="light" className="Toggle__reference"></label>
         <label htmlFor="default" className="Toggle__reference"></label>
         <label htmlFor="dark" className="Toggle__reference"></label>
-        <div className={`Toggle__circle Toggle__circle--${theme}`}></div>
+        <div
+          className={`Toggle__circle Toggle__circle--${theme}`}
+          style={getToggleCirclePosition()}
+        ></div>
       </div>
     </div>
   );
