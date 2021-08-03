@@ -3,6 +3,9 @@
     border-radius: 0.8rem;
     font-size: 3.2rem;
     border: none;
+    &:active {
+      transform: translateY(0.16rem);
+    }
     &--default {
       background-color: var(--key-background-tertiary-1);
       box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-tertiary-1b);
