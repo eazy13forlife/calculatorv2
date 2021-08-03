@@ -56,7 +56,13 @@ const App = () => {
       );
     },
     onDecimalClick: () => {
-      onDecimalClick(valuesArray, setValuesArray, setErrorMessage);
+      onDecimalClick(
+        valuesArray,
+        setValuesArray,
+        result,
+        setResult,
+        setErrorMessage
+      );
     },
     onExponentClick: () => {
       onExponentClick(
@@ -77,10 +83,10 @@ const App = () => {
       );
     },
     onDeleteClick: () => {
-      onDeleteClick(valuesArray, setValuesArray);
+      onDeleteClick(valuesArray, setValuesArray, setErrorMessage);
     },
     onResetClick: () => {
-      onResetClick(setValuesArray, setResult);
+      onResetClick(setValuesArray, setResult, setErrorMessage);
     },
     onEqualsClick: () => {
       onEqualsClick(joinAllNumbers, solve, valuesArray, setResult);
@@ -134,8 +140,9 @@ const App = () => {
             <p className=" Calculator__text">Theme</p>
             <Toggle onRadioSelection={setTheme} theme={theme} />
           </div>
+          <p className="Calculator__error-message">{errorMessage}</p>
         </div>
-        <span className="text">{errorMessage}</span>
+
         <div className={`Calculator__screen Calculator__screen--${theme}`}>
           <div className="Calculator__math Calculator__math--theme">
             {renderedScreenValues}

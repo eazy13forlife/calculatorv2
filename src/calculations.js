@@ -244,10 +244,19 @@ const getScientificNotation = (number) => {
   if (!isNaN(numberCopy) && numberCopy !== Infinity) {
     const numberArray = numberCopy.toString().split("");
     if (numberArray.length > 12) {
-      return Number.parseFloat(number).toExponential(6);
+      //get this number in its correct scientific notation form
+      let newValue = Number.parseFloat(numberCopy).toExponential(6);
+      //if we try to turn this scientific notation string into a number and still get "e" in it, that means this number is way too big, so let's just return Infinity
+      const newValueArray = Number(newValue).toString().split("");
+      if (newValueArray.includes("e")) {
+        return Infinity;
+      } else {
+        return newValue;
+      }
     }
   }
 
   return number;
 };
 export { solve, joinAllNumbers };
+//return Number.parseFloat(number).toExponential(6);

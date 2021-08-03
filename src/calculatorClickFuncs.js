@@ -107,7 +107,7 @@ const onNegativeClick = (
     !isNaN(+valuesArray[valuesArray.length - 1]) ||
     valuesArray[valuesArray.length - 1] === "."
   ) {
-    setErrorMessage("Cannot place a negative sign here");
+    setErrorMessage("Cannot place a negative sign after a number or decimal");
     return;
   }
 
@@ -118,8 +118,21 @@ const onNegativeClick = (
 };
 
 //function for when we select a decimal
-const onDecimalClick = (valuesArray, setValuesArray, setErrorMessage) => {
+const onDecimalClick = (
+  valuesArray,
+  setValuesArray,
+  result,
+  setResult,
+  setErrorMessage
+) => {
   setErrorMessage(null);
+  //if we have a result and a decimal was just selected, begin a new calculation with this decimal and clear the result
+  if (result) {
+    setValuesArray(["0", "."]);
+    setResult(null);
+    return;
+  }
+
   //if the last value is a factorial, don't push in the decimal. An operator has to
   //follow a factorial
   if (valuesArray[valuesArray.length - 1] === "!") {
@@ -270,16 +283,18 @@ const onEqualsClick = (joinAllNumbers, solve, valuesArray, setResult) => {
 };
 
 //function for when we select delete
-const onDeleteClick = (valuesArray, setValuesArray) => {
+const onDeleteClick = (valuesArray, setValuesArray, setErrorMessage) => {
   const newValues = [...valuesArray];
   newValues.pop();
+  setErrorMessage(null);
   setValuesArray(newValues);
 };
 
 //function for when we select reset
-const onResetClick = (setValuesArray, setResult) => {
+const onResetClick = (setValuesArray, setResult, setErrorMessage) => {
   setValuesArray([]);
   setResult(null);
+  setErrorMessage(null);
 };
 
 export {
