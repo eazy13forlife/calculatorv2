@@ -92,7 +92,7 @@ const App = () => {
           <h1 className={`Calculator__logo `}>calc</h1>
           <div className="Calculator__toggle">
             <p className=" Calculator__text">Theme</p>
-            <Toggle onRadioSelection={setTheme} />
+            <Toggle onRadioSelection={setTheme} theme={theme} />
           </div>
         </div>
         <div className={`Calculator__screen Calculator__screen--${theme}`}>

@@ -8,6 +8,15 @@
     align-items: center;
     height: 1.2rem;
     position: relative;
+    &--default {
+      background-color: var(--keypad-background-1);
+    }
+    &--light {
+      background-color: var(--keypad-background-2);
+    }
+    &--dark {
+      background-color: var(--keypad-background-3);
+    }
   }
 
   &__options {
@@ -53,5 +62,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 200ms;
+    &--default {
+    }
+    &--light {
+    }
+    &--dark {
+    }
   }
 }
