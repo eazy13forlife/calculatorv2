@@ -242,7 +242,7 @@ const getScientificNotation = (number) => {
   let numberCopy = number;
 
   if (!isNaN(numberCopy) && numberCopy !== Infinity) {
-    const numberArray = numberCopy.toString().split("");
+    const numberArray = numberCopy.toString();
     if (numberArray.length > 12) {
       //get this number in its correct scientific notation form
       let newValue = Number.parseFloat(numberCopy).toExponential(6);

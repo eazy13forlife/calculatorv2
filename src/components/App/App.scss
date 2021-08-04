@@ -22,11 +22,19 @@
 .Calculator {
   margin: auto;
   height: 51.5rem;
-  width: 32%;
+  width: 38rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @include abstracts.respondMax(900px) {
+    height: 100%;
+    padding: 2rem;
+    width: 35rem;
+  }
+  @include abstracts.respondMax(350px) {
+    width: 33rem;
+  }
   &--default {
     background-color: var(--main-background-1);
   }
@@ -140,8 +148,7 @@
     display: grid;
     grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
     grid-template-rows: repeat(6, [row-start] 1fr [row-end]);
-    grid-column-gap: 1.2rem;
-    grid-row-gap: 1.2rem;
+    grid-gap: 1.2rem;
     grid-template-areas:
       "seven eight nine del"
       "four five six add"
@@ -149,6 +156,10 @@
       "decimal zero divide multiply"
       "reset factorial exponent negative "
       "equals equals equals equals";
+    @include abstracts.respondMax(900px) {
+      height: 42rem;
+      grid-gap: 1rem;
+    }
     &--default {
       background-color: var(--keypad-background-1);
     }

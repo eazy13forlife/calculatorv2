@@ -1,3 +1,5 @@
+@use "../../styles/abstracts";
+
 .Key {
   &__button {
     border-radius: 0.8rem;
@@ -8,53 +10,54 @@
     }
     &--default {
       background-color: var(--key-background-tertiary-1);
-      box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-tertiary-1b);
+      box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-tertiary-1b);
       color: var(--text-primary-1a);
       &--del,
       &--reset {
         font-size: var(--numbers-font-small);
         background-color: var(--key-background-primary-1);
         color: var(--text-primary-1b);
-        box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-primary-1);
+        box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-primary-1);
       }
+
       &--equals {
         background-color: var(--key-background-secondary-1);
-        box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-secondary-1b);
+        box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-secondary-1b);
         color: var(--text-primary-1b);
       }
     }
     &--light {
       background-color: var(--key-background-tertiary-2);
       color: var(--text-primary-2a);
-      box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-tertiary-2b);
+      box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-tertiary-2b);
       &--del,
       &--reset {
         font-size: var(--numbers-font-small);
         background-color: var(--key-background-primary-2);
         color: var(--text-primary-2b);
-        box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-primary-2);
+        box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-primary-2);
       }
       &--equals {
         color: var(--text-primary-2b);
         background-color: var(--key-background-secondary-2);
-        box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-secondary-2b);
+        box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-secondary-2b);
       }
     }
     &--dark {
       background-color: var(--key-background-tertiary-3);
       color: var(--text-primary-3a);
-      box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-tertiary-3b);
+      box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-tertiary-3b);
       &--del,
       &--reset {
         font-size: var(--numbers-font-small);
         background-color: var(--key-background-primary-3);
         color: var(--text-primary-3c);
-        box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-primary-3);
+        box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-primary-3);
       }
       &--equals {
         color: var(--text-primary-3b);
         background-color: var(--key-background-secondary-3);
-        box-shadow: 0rem 0.3rem 0.2rem var(--key-shadow-secondary-3b);
+        box-shadow: 0rem 0.5rem 0.2rem var(--key-shadow-secondary-3b);
       }
     }
   }

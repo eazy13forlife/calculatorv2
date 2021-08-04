@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin respondMax($size) {
+  @media (max-width: $size/16px * 1em) {
+    @content;
+  }
+}
