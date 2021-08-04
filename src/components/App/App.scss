@@ -1,5 +1,6 @@
 @use "../../styles/abstracts";
 
+//backdrop to our calculator
 .Calculator__background {
   position: absolute;
   width: 100%;
@@ -17,6 +18,7 @@
   }
 }
 
+//our actual calculator css
 .Calculator {
   margin: auto;
   height: 51.5rem;
@@ -91,6 +93,44 @@
     flex-wrap: wrap;
     padding-bottom: 1rem;
   }
+
+  &__screen-number {
+    font-size: var(--numbers-font-small);
+    margin-left: 0.2rem;
+    &--operator {
+      margin: 0rem 0.7rem;
+      &--multiply {
+        transform: translateY(-0.3rem);
+      }
+      &--subtract {
+        transform: translateY(-0.2rem);
+      }
+    }
+    &--negative {
+      transform: translateY(-0.9rem) translateX(-0.13rem);
+      position: relative;
+      &::after {
+        content: "";
+        border-radius: 50%;
+        height: 1.6rem;
+        width: 1.9rem;
+        border-right-width: 2.5px;
+        border-right-style: solid;
+        border-left-width: 2.5px;
+        border-left-style: solid;
+        top: 1.1rem;
+        left: -0.25rem;
+        position: absolute;
+      }
+    }
+  }
+  &__result {
+    font-size: var(--numbers-font);
+    margin-top: 1rem;
+    text-align: right;
+    padding-right: 0.8rem;
+    width: 100%;
+  }
   &__body {
     width: 100%;
     height: calc(50rem - 6rem - 12.2rem);
@@ -118,33 +158,6 @@
     &--dark {
       background-color: var(--keypad-background-3);
     }
-  }
-
-  &__screen-number {
-    font-size: var(--numbers-font-small);
-    margin-left: 0.2rem;
-    &--multiply {
-      transform: translateY(-0.3rem);
-      margin: 0rem 0.5rem;
-    }
-    &--subtract {
-      transform: translateY(-0.2rem);
-      margin: 0rem 0.5rem;
-    }
-    &--add {
-      margin: 0rem 0.5rem;
-    }
-    &--divide {
-      margin: 0rem 0.5rem;
-    }
-  }
-  &__result {
-    font-size: var(--numbers-font);
-    margin-top: 1rem;
-    margin-left: 0.2rem;
-    text-align: right;
-    padding-right: 0.8rem;
-    width: 100%;
   }
   .Key {
     &__button--0 {
@@ -214,19 +227,4 @@
       grid-area: factorial;
     }
   }
-}
-p.number {
-  font-size: var(--numbers-font);
-  color: red;
-
-  margin-left: 1rem;
-  &--negative {
-    position: relative;
-    bottom: 0.6rem;
-    font-size: 2.9rem;
-  }
-}
-
-.negative {
-  display: block;
 }

@@ -3,6 +3,7 @@ import React from "react";
 import "./Key.scss";
 
 const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
+  //returns a className for each key value
   const getKeyClassName = () => {
     switch (keyValue) {
       case "+":
@@ -28,6 +29,7 @@ const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
     }
   };
 
+  //function to run when a specific calculator button has been selected
   const onButtonClick = (value) => {
     switch (value) {
       case "x":
@@ -53,15 +55,6 @@ const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
       default:
         return clickFunctions.onNumberClick(value);
     }
-  };
-
-  const getAdditionalClass = () => {
-    if (!additionalClass) {
-      return null;
-    } else
-      return {
-        additionalClass,
-      };
   };
 
   return (

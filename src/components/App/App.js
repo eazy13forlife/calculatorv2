@@ -93,6 +93,7 @@ const App = () => {
     },
   };
 
+  //create our keypad for our calculator
   const renderedKeypad = keypad.map((keyValue, index) => {
     return (
       <React.Fragment key={index}>
@@ -105,27 +106,40 @@ const App = () => {
     );
   });
 
+  const renderScreenOperatorClasses = (value) => {
+    switch (value) {
+      case "x":
+        return "Calculator__screen-number--operator Calculator__screen-number--operator--multiply";
+      case "-":
+        return "Calculator__screen-number--operator Calculator__screen-number--operator--subtract";
+      case "/":
+      case "+":
+        return "Calculator__screen-number--operator";
+      default:
+        return "";
+    }
+  };
+
+  //renders each value we see on calculator screen
   const renderedScreenValues = valuesArray.map((value, index) => {
     if (value !== "_") {
       return (
         <p
           key={index}
-          className={`Calculator__screen-number ${
-            value === "x" ? "Calculator__screen-number--multiply" : ""
-          } ${value === "-" ? "Calculator__screen-number--subtract" : ""}
-          ${value === "+" ? "Calculator__screen-number--add" : ""}
-          ${value === "/" ? "Calculator__screen-number--divide" : ""}
-          ${
-            value === "/" ? "Calculator__screen-number--divide" : ""
-          } ${`Calculator__screen-number--${theme}`}`}
+          className={`Calculator__screen-number ${renderScreenOperatorClasses(
+            value
+          )} ${`Calculator__screen-number--${theme}`}`}
         >
           {value}
         </p>
       );
     } else {
       return (
-        <p key={index} className="number number--negative">
-          <span className="negative">{value}</span>
+        <p
+          key={index}
+          className="Calculator__screen-number Calculator__screen-number--negative "
+        >
+          {value}
         </p>
       );
     }
