@@ -30,6 +30,7 @@
   @include abstracts.respondMax(900px) {
     height: 100%;
     padding: 2rem;
+    padding-top: 3rem;
     width: 35rem;
   }
   @include abstracts.respondMax(350px) {
@@ -157,7 +158,7 @@
       "reset factorial exponent negative "
       "equals equals equals equals";
     @include abstracts.respondMax(900px) {
-      height: 42rem;
+      height: 60%;
       grid-gap: 1rem;
     }
     &--default {
