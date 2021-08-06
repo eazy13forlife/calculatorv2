@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./Key.scss";
 
-const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
+const Key = ({ keyValue, theme, clickFunctions }) => {
   //returns a className for each key value
   const getKeyClassName = () => {
     switch (keyValue) {
@@ -50,7 +50,6 @@ const Key = ({ keyValue, theme, additionalClass, clickFunctions }) => {
       case ".":
         return clickFunctions.onDecimalClick();
       case "+/-":
-        console.log("hey");
         return clickFunctions.onNegativeClick();
       default:
         return clickFunctions.onNumberClick(value);

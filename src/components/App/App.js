@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Key from "../Key/Key.js";
 import "./App.scss";
@@ -25,6 +25,53 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [theme, setTheme] = useColorTheme();
 
+  //creating my keydown events for each key on calculator
+  useEffect(() => {
+    const operations = (e) => {
+      switch (e.key) {
+        case "x":
+        case "/":
+        case "-":
+        case "+":
+          return clickFunctions.onOperatorClick(e.key);
+        case "=":
+        case "Enter":
+          return clickFunctions.onEqualsClick();
+        case "c":
+          return clickFunctions.onResetClick();
+        case "Backspace":
+          return clickFunctions.onDeleteClick();
+        case "!":
+          return clickFunctions.onFactorialClick();
+        case "^":
+          return clickFunctions.onExponentClick();
+        case ".":
+          return clickFunctions.onDecimalClick();
+        case "_":
+          return clickFunctions.onNegativeClick();
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+          return clickFunctions.onNumberClick(e.key);
+        default:
+          break;
+      }
+    };
+    document.addEventListener("keydown", operations);
+
+    return () => {
+      document.removeEventListener("keydown", operations);
+    };
+  }, [valuesArray]);
+
+  //click functions for when we click on a button
   const clickFunctions = {
     onOperatorClick: (operator) => {
       onOperatorClick(
