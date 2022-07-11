@@ -1,5 +1,4 @@
 # Calculator App
-
 An online calculator with basic arithmetic operations. Mouse and keyboard functionality included.
 
 ## Live Url
